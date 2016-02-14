@@ -1,0 +1,22 @@
+{
+    "name": "matthew-macgregor/wp-exomorph",
+    "description": "A simple Wordpress XML export parser for PHP",
+    "type": "library",
+    "keywords": [
+        "wordpress",
+        "xml",
+        "export"
+    ],
+    "homepage": "https://github.com/matthew-macgregor/wp-exomorph",
+    "authors" : [{
+        "name": "Matthew MacGregor",
+        "email": "m.macgregor@gmail.com"
+    }],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "files": [ "wp-xml.php" ]
+    }
+}
