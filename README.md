@@ -17,6 +17,26 @@ WP-Exomorph isn't really intended to be an export library, but there's a sample 
 If you write an exporter, please consider contributing it back to the project so that others may
 use it.
 
+### Installation
+
+You can install via Composer:
+
+    {
+        "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/matthew-macgregor/wp-exomorph"
+            }
+        ],
+        "require": {
+            "matthew-macgregor/wp-exomorph": "0.1.*"
+        }
+    }
+
+Or just download and include:
+
+    require_once 'wp-exomorph.php';
+
 ### Example Usage
 
 You can see this example in action in `example.php`.
