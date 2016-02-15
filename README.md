@@ -3,7 +3,7 @@
 Wordpress makes it surprisingly easy to get a complete dump of your site's textual content as XML. 
 I needed a simple way to slurp in this data and transform it, because I was migrating a blog from
 Wordpress to a static site. I needed control of the output because the static site builder I'm 
-using is custom (although mostly compatible with Hugo's JSON-formatted frontmatter.
+using is custom (although mostly compatible with Hugo's JSON-formatted frontmatter).
 
 I wrote this simple library to solve this need. It has the following features:
 
