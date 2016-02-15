@@ -5,10 +5,10 @@ require_once 'wp-exomorph.php';
 
 // Load the XML from a string
 $str = file_get_contents('matthewmacgregor.wordpress.2016-02-12.xml');
-$posts = Posts::from_string($str);
+$posts = \WPExomorph\Posts::from_string($str);
 
 // Load the XML from a file
-$posts = Posts::from_file('matthewmacgregor.wordpress.2016-02-12.xml');
+$posts = \WPExomorph\Posts::from_file('matthewmacgregor.wordpress.2016-02-12.xml');
 
 // Blog-level data is in the Posts object:
 echo $posts->title . PHP_EOL;
@@ -29,6 +29,6 @@ if( file_exists($export_dir) == false ) {
     mkdir($export_dir);
 }
 
-$exporter = new SimpleMarkdownExporter($posts);
+$exporter = new \WPExomorph\SimpleMarkdownExporter($posts);
 $exporter->set_dir_path($export_dir);
 $exporter->export();

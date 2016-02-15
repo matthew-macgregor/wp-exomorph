@@ -1,6 +1,8 @@
 <?php
 
-class Posts implements Iterator {
+namespace WPExomorph;
+
+class Posts implements \Iterator {
 
 	/*
 	* Loads the posts object from a valid Wordpress export xml file.
@@ -19,7 +21,7 @@ class Posts implements Iterator {
 	*/
 	public static function from_string($str) {
 		if( $str )  {
-			$xml = new SimpleXMLElement($str);
+			$xml = new \SimpleXMLElement($str);
 			return new Posts($xml);
 		} else {
 			throw new Exception("Input is not a valid string.");
