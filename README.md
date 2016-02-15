@@ -45,7 +45,7 @@ You can see this example in action in `example.php`.
 
     // Load the XML from a string
     $str = file_get_contents('matthewmacgregor.wordpress.2016-02-12.xml');
-    $posts = Posts::from_string($str);
+    $posts = \WPExomorph\Posts::from_string($str);
 
     // OR Load the XML from a file
     $posts = Posts::from_file('matthewmacgregor.wordpress.2016-02-12.xml');
@@ -63,7 +63,7 @@ You can see this example in action in `example.php`.
     }
 
     // Use the exporter
-    $exporter = new SimpleMarkdownExporter($posts);
+    $exporter = new \WPExomorph\SimpleMarkdownExporter($posts);
     $exporter->set_dir_path('export');
     $exporter->export();
 
