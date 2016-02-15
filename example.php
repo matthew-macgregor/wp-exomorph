@@ -19,7 +19,8 @@ foreach($posts as $post) {
 
     // Do stuff with each post
     echo $post->title . PHP_EOL;
-    echo $post->name . PHP_EOL;   
+    echo $post->name . PHP_EOL;  
+    
 }
 
 // Use the exporter

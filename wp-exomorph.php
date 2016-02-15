@@ -234,7 +234,10 @@ class SimpleMarkdownExporter implements Exporter {
 	*/
 	private function export_post($post) {
 		$title = ($post->title) ? $post->title : "Title Unknown";
-		$date = $post->date;
+		$date = date_parse($post->date);
+        $year = $date['year'];
+        $month = str_pad($date['month'], 2, "0", STR_PAD_LEFT);
+        $day = str_pad($date['day'], 2, "0", STR_PAD_LEFT);
 		$status = $post->status;
 		$type = $post->type;
 		$author = $post->creator;
@@ -245,7 +248,7 @@ class SimpleMarkdownExporter implements Exporter {
 		$frontmatter = [
 			"title" => $title,
 			"description" => $description,
-			"date" => $date,
+			"date" => "$year-$month-$day",
 			"slug" => $name,
 			"categories" => $this->get_category_names('category', $post->categories),
 			"tags" => $this->get_category_names('post_tag', $post->categories)
