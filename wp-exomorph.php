@@ -191,7 +191,19 @@ class SimpleMarkdownExporter implements Exporter {
 	public function __construct($posts) {
 		$this->posts = $posts;
 		$this->path = "";
+        $this->excluded_types = ['attachment', 'nav_menu_item', 'feedback'];
 	}
+    
+    /*
+    * Provide an array of strings that represent Wordpress post types
+    * to be excluded from the export.
+    * Default: ['attachment', 'nav_menu_item', 'feedback']
+    */
+    public function exclude_types($types) {
+        if($types) {
+            $this->excluded_types = $types;  
+        }
+    }
 
 	/*
 	* Sets the path to a directory where the posts will be outputted. The directory
@@ -233,23 +245,33 @@ class SimpleMarkdownExporter implements Exporter {
 	* Handles exporting the post.
 	*/
 	private function export_post($post) {
+        $type = $post->type;
+        $name = $post->name;
+        
+        if( in_array($type, $this->excluded_types)) {
+            // echo "Skipping $type => $name.\n";
+            return;
+        }
+        
 		$title = ($post->title) ? $post->title : "Title Unknown";
 		$date = date_parse($post->date);
         $year = $date['year'];
         $month = str_pad($date['month'], 2, "0", STR_PAD_LEFT);
         $day = str_pad($date['day'], 2, "0", STR_PAD_LEFT);
 		$status = $post->status;
-		$type = $post->type;
+        
 		$author = $post->creator;
 		$description = $post->description;
 		$content = $post->content;
-		$name = $post->name;
+		
 		$filename = Path::join($this->path,"$name.md");
 		$frontmatter = [
 			"title" => $title,
 			"description" => $description,
 			"date" => "$year-$month-$day",
 			"slug" => $name,
+            "author" => $author,
+            "type" => $type,
 			"categories" => $this->get_category_names('category', $post->categories),
 			"tags" => $this->get_category_names('post_tag', $post->categories)
 		];

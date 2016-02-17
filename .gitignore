@@ -1,1 +1,5 @@
+# ignore XML files
 *.xml
+
+# ignore directories
+export/
